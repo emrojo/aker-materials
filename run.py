@@ -10,6 +10,7 @@ from flask import request, jsonify, abort, Response
 from flask_bootstrap import Bootstrap
 from eve_docs import eve_docs
 from bson import json_util
+from flask_zipkin import Zipkin
 
 SETTINGS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'db', 'development.py')
 
@@ -78,6 +79,9 @@ if __name__ == '__main__':
       'url: %(url)s, method:%(method)s'))
 
   app = create_app(SETTINGS_PATH)
+
+  zipkin = Zipkin(sample_rate=100)
+  zipkin.init_app(app)
 
   # the default log level is set to WARNING, so
   # we have to explictly set the logging level
