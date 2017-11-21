@@ -96,7 +96,6 @@ material_schema = {
     'show_on_form': True,
     'searchable': True,
     'required': True,
-    'allowed': ['Homo sapiens', 'Mus musculus'],
     'friendly_name': 'Scientific name',
     'field_name_regex': '^scientific[-_\s]*(name)?$',
     'show_on_set_results': True
